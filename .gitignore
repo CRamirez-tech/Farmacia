@@ -4,7 +4,9 @@
 /config/.env
 /logs/*
 /tmp/*
+!/vendor
 /vendor/*
+!/vendor/autoload.php
 
 # OS generated files #
 ######################
