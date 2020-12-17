@@ -23,10 +23,6 @@
                     <td><?= h($pharmacy->name) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Location') ?></th>
-                    <td><?= $pharmacy->has('location') ? $this->Html->link($pharmacy->location->id, ['controller' => 'Locations', 'action' => 'view', $pharmacy->location->id]) : '' ?></td>
-                </tr>
-                <tr>
                     <th><?= __('User') ?></th>
                     <td><?= $pharmacy->has('user') ? $this->Html->link($pharmacy->user->name, ['controller' => 'Users', 'action' => 'view', $pharmacy->user->id]) : '' ?></td>
                 </tr>
@@ -37,6 +33,18 @@
                 <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($pharmacy->id) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Latitude') ?></th>
+                    <td><?= $this->Number->format($pharmacy->latitude) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Length') ?></th>
+                    <td><?= $this->Number->format($pharmacy->length) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Status') ?></th>
+                    <td><?= $pharmacy->status ? __('Yes') : __('No'); ?></td>
                 </tr>
             </table>
             <div class="related">

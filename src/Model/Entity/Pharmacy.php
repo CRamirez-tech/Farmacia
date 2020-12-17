@@ -10,11 +10,12 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $name
- * @property int $location_id
  * @property int $user_id
  * @property string $address
+ * @property bool $status
+ * @property float $latitude
+ * @property float $length
  *
- * @property \App\Model\Entity\Location $location
  * @property \App\Model\Entity\User $user
  * @property \App\Model\Entity\Comment[] $comments
  * @property \App\Model\Entity\Product[] $products
@@ -32,10 +33,11 @@ class Pharmacy extends Entity
      */
     protected $_accessible = [
         'name' => true,
-        'location_id' => true,
         'user_id' => true,
         'address' => true,
-        'location' => true,
+        'status' => true,
+        'latitude' => true,
+        'length' => true,
         'user' => true,
         'comments' => true,
         'products' => true,

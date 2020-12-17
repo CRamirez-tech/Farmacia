@@ -23,7 +23,6 @@ class PharmaciesControllerTest extends TestCase
      */
     protected $fixtures = [
         'app.Pharmacies',
-        'app.Locations',
         'app.Users',
         'app.Comments',
         'app.Products',

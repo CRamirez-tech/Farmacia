@@ -11,7 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Pharmacies Model
  *
- * @property \App\Model\Table\LocationsTable&\Cake\ORM\Association\BelongsTo $Locations
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  * @property \App\Model\Table\CommentsTable&\Cake\ORM\Association\HasMany $Comments
  * @property \App\Model\Table\ProductsTable&\Cake\ORM\Association\HasMany $Products
@@ -46,10 +45,6 @@ class PharmaciesTable extends Table
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
 
-        $this->belongsTo('Locations', [
-            'foreignKey' => 'location_id',
-            'joinType' => 'INNER',
-        ]);
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER',
@@ -76,7 +71,7 @@ class PharmaciesTable extends Table
 
         $validator
             ->scalar('name')
-            ->maxLength('name', 70)
+            ->maxLength('name', 20)
             ->requirePresence('name', 'create')
             ->notEmptyString('name');
 
@@ -85,6 +80,21 @@ class PharmaciesTable extends Table
             ->maxLength('address', 30)
             ->requirePresence('address', 'create')
             ->notEmptyString('address');
+
+        $validator
+            ->boolean('status')
+            ->requirePresence('status', 'create')
+            ->notEmptyString('status');
+
+        $validator
+            ->numeric('latitude')
+            ->requirePresence('latitude', 'create')
+            ->notEmptyString('latitude');
+
+        $validator
+            ->numeric('length')
+            ->requirePresence('length', 'create')
+            ->notEmptyString('length');
 
         return $validator;
     }
@@ -98,7 +108,6 @@ class PharmaciesTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->existsIn(['location_id'], 'Locations'), ['errorField' => 'location_id']);
         $rules->add($rules->existsIn(['user_id'], 'Users'), ['errorField' => 'user_id']);
 
         return $rules;

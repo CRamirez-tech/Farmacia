@@ -13,9 +13,11 @@
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
-                    <th><?= $this->Paginator->sort('location_id') ?></th>
                     <th><?= $this->Paginator->sort('user_id') ?></th>
                     <th><?= $this->Paginator->sort('address') ?></th>
+                    <th><?= $this->Paginator->sort('status') ?></th>
+                    <th><?= $this->Paginator->sort('latitude') ?></th>
+                    <th><?= $this->Paginator->sort('length') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -24,9 +26,11 @@
                 <tr>
                     <td><?= $this->Number->format($pharmacy->id) ?></td>
                     <td><?= h($pharmacy->name) ?></td>
-                    <td><?= $pharmacy->has('location') ? $this->Html->link($pharmacy->location->id, ['controller' => 'Locations', 'action' => 'view', $pharmacy->location->id]) : '' ?></td>
                     <td><?= $pharmacy->has('user') ? $this->Html->link($pharmacy->user->name, ['controller' => 'Users', 'action' => 'view', $pharmacy->user->id]) : '' ?></td>
                     <td><?= h($pharmacy->address) ?></td>
+                    <td><?= h($pharmacy->status) ?></td>
+                    <td><?= $this->Number->format($pharmacy->latitude) ?></td>
+                    <td><?= $this->Number->format($pharmacy->length) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $pharmacy->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $pharmacy->id]) ?>

@@ -23,9 +23,11 @@
                 <legend><?= __('Edit Pharmacy') ?></legend>
                 <?php
                     echo $this->Form->control('name');
-                    echo $this->Form->control('location_id', ['options' => $locations]);
                     echo $this->Form->control('user_id', ['options' => $users]);
                     echo $this->Form->control('address');
+                    echo $this->Form->control('status');
+                    echo $this->Form->control('latitude');
+                    echo $this->Form->control('length');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

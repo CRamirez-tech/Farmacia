@@ -19,7 +19,7 @@ class PharmaciesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Locations', 'Users'],
+            'contain' => ['Users'],
         ];
         $pharmacies = $this->paginate($this->Pharmacies);
 
@@ -36,7 +36,7 @@ class PharmaciesController extends AppController
     public function view($id = null)
     {
         $pharmacy = $this->Pharmacies->get($id, [
-            'contain' => ['Locations', 'Users', 'Comments', 'Products'],
+            'contain' => ['Users', 'Comments', 'Products'],
         ]);
 
         $this->set(compact('pharmacy'));
@@ -59,9 +59,8 @@ class PharmaciesController extends AppController
             }
             $this->Flash->error(__('The pharmacy could not be saved. Please, try again.'));
         }
-        $locations = $this->Pharmacies->Locations->find('list', ['limit' => 200]);
         $users = $this->Pharmacies->Users->find('list', ['limit' => 200]);
-        $this->set(compact('pharmacy', 'locations', 'users'));
+        $this->set(compact('pharmacy', 'users'));
     }
 
     /**
@@ -85,9 +84,8 @@ class PharmaciesController extends AppController
             }
             $this->Flash->error(__('The pharmacy could not be saved. Please, try again.'));
         }
-        $locations = $this->Pharmacies->Locations->find('list', ['limit' => 200]);
         $users = $this->Pharmacies->Users->find('list', ['limit' => 200]);
-        $this->set(compact('pharmacy', 'locations', 'users'));
+        $this->set(compact('pharmacy', 'users'));
     }
 
     /**
